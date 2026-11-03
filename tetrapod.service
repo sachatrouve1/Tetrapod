@@ -3,8 +3,8 @@ Description=Get a daily new wallpaper from Nasa
 
 [Service]
 Type=oneshot
-WorkingDirectory=%h/Documents/coding/rust/Tetrapod
-ExecStart=%h/Documents/coding/rust/Tetrapod/target/release/Tetrapod
+WorkingDirectory=%h/Tetrapod
+ExecStart=%h/Tetrapod/target/release/Tetrapod
 
 [Install]
 WantedBy=default.target

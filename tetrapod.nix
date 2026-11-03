@@ -9,8 +9,8 @@
       ];
       serviceConfig = {
         Type = "oneshot";
-        WorkingDirectory = "/home/${userName}/Documents/coding/rust/Tetrapod";
-        ExecStart = "/home/${userName}/Documents/coding/rust/Tetrapod/target/release/Tetrapod";
+        WorkingDirectory = "/home/${userName}/Tetrapod";
+        ExecStart = "/home/${userName}/Tetrapod/target/release/Tetrapod";
       };
     };
 
