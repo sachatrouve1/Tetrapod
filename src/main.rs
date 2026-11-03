@@ -3,7 +3,7 @@ use std::process::Command;
 
 mod apod_post;
 mod downloader;
-mod date_checker;
+mod record;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -11,7 +11,7 @@ async fn main() -> Result<()> {
     let picture_filename = "wallpaper.png";
     let date_record_filename = "last_date.txt";
 
-    if !date_checker::is_up_to_date(date_record_filename) {
+    if !record::is_up_to_date(date_record_filename) {
         println!("Asking Apod...");
 
         let response = reqwest::get(endpoint_url).await?;
@@ -33,6 +33,8 @@ async fn main() -> Result<()> {
                 let _status = Command::new("./set_wallpaper.sh")
                     .arg(image_path)
                     .status();
+
+                let _ = record::record_date(date_record_filename);
             }
         } else {
             println!("No post found");
