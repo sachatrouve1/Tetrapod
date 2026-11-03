@@ -64,7 +64,7 @@ systemctl --user daemon-reload
 systemctl --user enable --now tetrapod.timer
 ```
 
-The timer runs Tetrapod 5 minutes after boot and every hour thereafter, triggering a download only when a new image is available for the day.
+The timer runs Tetrapod 30 seconds after boot and every hour thereafter, triggering a download only when a new image is available for the day.
 
 ### NixOS
 
