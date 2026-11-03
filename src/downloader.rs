@@ -2,7 +2,7 @@ use std::path::PathBuf;
 use tokio::fs;
 use anyhow::Result;
 
-pub async fn download_image(url: &str, filename: &str) -> Result<()> {
+pub async fn download_image(url: &str, filename: &str) -> Result<PathBuf> {
     let home = std::env::var("HOME").unwrap_or_else(|_| ".".into());
     let dest_dir = PathBuf::from(home).join(".local");
 
@@ -17,5 +17,5 @@ pub async fn download_image(url: &str, filename: &str) -> Result<()> {
 
     println!("Image saved at: {}", file_path.display());
 
-    Ok(())
+    Ok(file_path)
 }

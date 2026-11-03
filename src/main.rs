@@ -1,4 +1,5 @@
 use anyhow::Result;
+use std::process::Command;
 
 mod apod_post;
 mod downloader;
@@ -27,7 +28,11 @@ async fn main() -> Result<()> {
             if let Some(image_url) = &latest_post.hdurl {
                 println!("Image url: {}", image_url);
 
-                downloader::download_image(image_url, picture_filename).await?;
+                let image_path = downloader::download_image(image_url, picture_filename).await?;
+
+                let _status = Command::new("./set_wallpaper.sh")
+                    .arg(image_path)
+                    .status();
             }
         } else {
             println!("No post found");
