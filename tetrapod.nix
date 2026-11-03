@@ -3,6 +3,10 @@
   systemd.user = {
     services.tetrapod = {
       description = "Get a daily new wallpaper from Nasa";
+      path = [
+        "/run/current-system/sw"
+        "/etc/profiles/per-user/${userName}"
+      ];
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/home/${userName}/Documents/coding/rust/Tetrapod";
