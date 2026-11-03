@@ -24,7 +24,7 @@ The hook script can be edited to support any desktop environment or wallpaper ma
 Clone the repository and compile the release binary:
 
 ```bash
-git clone https://github.com/your-username/Tetrapod.git
+git clone https://github.com/sachatrouve1/Tetrapod.git
 cd Tetrapod
 chmod +x set_wallpaper.sh
 cargo build --release
