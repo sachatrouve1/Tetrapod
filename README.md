@@ -40,7 +40,7 @@ Run the binary directly:
 ./target/release/Tetrapod
 ```
 
-On the first run of the day, Tetrapod queries NASA's API, downloads the image to `~/.local/wallpaper.png`, updates the cache timestamp, and invokes `./set_wallpaper.sh`. Subsequent runs on the same day will report `Up to date` and exit immediately.
+On the first run of the day, Tetrapod queries NASA's API, downloads the image to `./wallpaper.png`, updates the cache timestamp, and invokes `./set_wallpaper.sh`. Subsequent runs on the same day will report `Up to date` and exit immediately.
 
 ## Automation with Systemd
 
@@ -72,7 +72,7 @@ The timer runs Tetrapod 5 minutes after boot and every 2 hours thereafter, trigg
 
 | Path                              | Description                                         |
 | --------------------------------- | --------------------------------------------------- |
-| `~/.local/wallpaper.png`          | Saved high-resolution wallpaper                     |
+| `~./wallpaper.png`                | Saved high-resolution wallpaper                     |
 | `~/.cache/tetrapod/last_date.txt` | Cached timestamp of the last successful fetch       |
 | `~/.cache/wallpaper.png`          | Working wallpaper copy referenced by pywal          |
 | `./set_wallpaper.sh`              | Shell script executed after downloading a new image |

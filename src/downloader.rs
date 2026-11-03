@@ -1,21 +1,13 @@
-use std::path::PathBuf;
 use tokio::fs;
 use anyhow::Result;
 
-pub async fn download_image(url: &str, filename: &str) -> Result<PathBuf> {
-    let home = std::env::var("HOME").unwrap_or_else(|_| ".".into());
-    let dest_dir = PathBuf::from(home).join(".local");
-
-    fs::create_dir_all(&dest_dir).await?;
-
-    let file_path = dest_dir.join(filename);
-
+pub async fn download_image<'a>(url: &'a str, filename: &'a str) -> Result<&'a str> {
     let response = reqwest::get(url).await?;
     let bytes = response.bytes().await?;
 
-    fs::write(&file_path, bytes).await?;
+    fs::write(&filename, bytes).await?;
 
-    println!("Image saved at: {}", file_path.display());
+    println!("Image saved at: {}", filename);
 
-    Ok(file_path)
+    Ok(filename)
 }
