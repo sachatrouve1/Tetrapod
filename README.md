@@ -57,7 +57,7 @@ mkdir -p ~/.config/systemd/user
 cp tetrapod.service tetrapod.timer ~/.config/systemd/user/
 ```
 
-2. Remove the `User=sacha` line in `~/.config/systemd/user/tetrapod.service` (user services run as the active user by default).
+2. Remove the `User=<user>` line in `~/.config/systemd/user/tetrapod.service` (user services run as the active user by default).
 
 3. Reload systemd and enable the timer:
 
@@ -66,7 +66,7 @@ systemctl --user daemon-reload
 systemctl --user enable --now tetrapod.timer
 ```
 
-The timer runs Tetrapod 5 minutes after boot and every 2 hours thereafter, triggering a download only when a new image is available for the day.
+The timer runs Tetrapod 5 minutes after boot and every 1 hours thereafter, triggering a download only when a new image is available for the day.
 
 ## File Locations
 
