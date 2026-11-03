@@ -50,29 +50,39 @@ Systemd unit files (`tetrapod.service` and `tetrapod.timer`) are included in the
 
 To run Tetrapod automatically under your user session:
 
-1. Copy the unit files to your systemd user configuration directory:
+1. Copy the unit files to your systemd user configuration directory (ensure the paths in `tetrapod.service` match your repository location):
 
 ```bash
 mkdir -p ~/.config/systemd/user
 cp tetrapod.service tetrapod.timer ~/.config/systemd/user/
 ```
 
-2. Remove the `User=<user>` line in `~/.config/systemd/user/tetrapod.service` (user services run as the active user by default).
-
-3. Reload systemd and enable the timer:
+2. Reload systemd and enable the timer:
 
 ```bash
 systemctl --user daemon-reload
 systemctl --user enable --now tetrapod.timer
 ```
 
-The timer runs Tetrapod 5 minutes after boot and every 1 hours thereafter, triggering a download only when a new image is available for the day.
+The timer runs Tetrapod 5 minutes after boot and every hour thereafter, triggering a download only when a new image is available for the day.
+
+### NixOS
+
+If you are using NixOS, you can import [`tetrapod.nix`](./tetrapod.nix) directly into your configuration:
+
+```nix
+imports = [
+  ./tetrapod.nix
+];
+```
+
+Make sure `userName` is passed as a module argument or configured in your NixOS module arguments.
 
 ## File Locations
 
 | Path                              | Description                                         |
 | --------------------------------- | --------------------------------------------------- |
-| `~./wallpaper.png`                | Saved high-resolution wallpaper                     |
+| `./wallpaper.png`                 | Saved high-resolution wallpaper                     |
 | `~/.cache/tetrapod/last_date.txt` | Cached timestamp of the last successful fetch       |
 | `~/.cache/wallpaper.png`          | Working wallpaper copy referenced by pywal          |
 | `./set_wallpaper.sh`              | Shell script executed after downloading a new image |

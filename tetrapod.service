@@ -3,13 +3,8 @@ Description=Get a daily new wallpaper from Nasa
 
 [Service]
 Type=oneshot
-# If installing as a system service in /etc/systemd/system/, keep User=<user>:
-User=<user>
-WorkingDirectory=/home/sacha/Documents/coding/rust/Tetrapod
-ExecStart=/home/sacha/Documents/coding/rust/Tetrapod/target/release/Tetrapod
-
-# Note: If running as a user service in ~/.config/systemd/user/, remove the 'User=sacha' line
-# and you can use '%h/Documents/coding/rust/Tetrapod' for WorkingDirectory and ExecStart.
+WorkingDirectory=%h/Documents/coding/rust/Tetrapod
+ExecStart=%h/Documents/coding/rust/Tetrapod/target/release/Tetrapod
 
 [Install]
 WantedBy=default.target

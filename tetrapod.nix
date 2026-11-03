@@ -1,14 +1,12 @@
 { config, userName, ... }:
 {
-  systemd = {
+  systemd.user = {
     services.tetrapod = {
       description = "Get a daily new wallpaper from Nasa";
-      script = ''
-        /home/${userName}/Documents/coding/rust/Tetrapod/target/release/Tetrapod
-      '';
       serviceConfig = {
         Type = "oneshot";
-        User = userName;
+        WorkingDirectory = "/home/${userName}/Documents/coding/rust/Tetrapod";
+        ExecStart = "/home/${userName}/Documents/coding/rust/Tetrapod/target/release/Tetrapod";
       };
     };
 
