@@ -2,7 +2,7 @@
 Description=Tetrapod timer
 
 [Timer]
-OnBootSec=5min
+OnStartupSec=30sec
 OnUnitActiveSec=1h
 Persistent=true
 

@@ -14,7 +14,7 @@
       description = "Tetrapod timer";
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "5min";
+        OnStartupSec = "30sec";
         OnUnitActiveSec = "1h";
         Persistent = true;
       };
