@@ -37,7 +37,11 @@ async fn main() -> Result<()> {
         );
 
         if let Some(image_url) = &latest_post.hdurl {
-            let image_path = downloader::download_image(image_url, picture_filename).await?;
+            let image_path = downloader::download_image(
+                image_url,
+                record::get_cache_file_path(picture_filename),
+            )
+            .await?;
             let bash_cmd = if std::path::Path::new("/run/current-system/sw/bin/bash").exists() {
                 "/run/current-system/sw/bin/bash"
             } else {
