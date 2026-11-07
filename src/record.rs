@@ -1,10 +1,10 @@
+use anyhow::Result;
+use chrono::Local;
 use std::fs;
 use std::path::PathBuf;
-use chrono::Utc;
-use anyhow::Result;
 
 fn get_current_date() -> String {
-    let current_date = Utc::now().format("%d-%m-%Y").to_string();
+    let current_date = Local::now().format("%d-%m-%Y").to_string();
     return current_date;
 }
 
@@ -38,4 +38,3 @@ pub fn record_date(filename: &str) -> Result<()> {
     let _ = fs::write(&get_cache_file_path(filename), get_current_date());
     Ok(())
 }
-
